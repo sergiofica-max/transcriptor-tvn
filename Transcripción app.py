@@ -59,11 +59,12 @@ st.markdown(f"""
     </style>
 """, unsafe_allow_html=True)
 
-# --- INICIALIZACIÓN DEL MODELO (Caché de Streamlit) ---
+# --- INICIALIZACIÓN DEL MODELO (Modificado para Streamlit Cloud) ---
 @st.cache_resource
 def cargar_modelos():
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    compute_type = "float16" if torch.cuda.is_available() else "int8"
+    # Forzamos CPU e int8 para que sea compatible con el entorno gratuito de Streamlit Cloud
+    device = "cpu"
+    compute_type = "int8"
     model_idx = whisperx.load_model("turbo", device, compute_type=compute_type, language="es")
     return model_idx, device
 
@@ -89,4 +90,6 @@ def quitar_bucles_redundantes(texto):
                     veces = 0
                     while i + (veces + 2) * k <= n:
                         siguiente_chunk = palabras[i + (veces + 1) * k : i + (veces + 2) * k]
-                        if [re.sub(r'[^\w]', '', w.lower
+                        if [re.sub(r'[^\w]', '', w.lower()) for w in siguiente_chunk] == c1_norm: veces += 1
+                        else: break
+                    resultado.extend(chunk1)
