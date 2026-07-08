@@ -1,7 +1,7 @@
 whisperx @ git+https://github.com/m-bain/whisperX.git@main
-torch
+torch==2.8.0
+torchaudio==2.8.0
 transformers
 pandas
 numpy
 jiwer
-torchaudio
