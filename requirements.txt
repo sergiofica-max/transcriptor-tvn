@@ -1,5 +1,7 @@
 streamlit
-torch
-torchvision
-torchaudio
+torch --index-url https://download.pytorch.org/whl/cpu
+torchaudio --index-url https://download.pytorch.org/whl/cpu
+transformers
+numpy
+ffmpeg-python
 git+https://github.com/m-bain/whisperX.git
