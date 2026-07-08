@@ -1,4 +1,7 @@
-git+https://github.com/m-bain/whisperX.git
-gradio
+whisperx @ git+https://github.com/m-bain/whisperX.git@main
 torch
 transformers
+pandas
+numpy
+jiwer
+torchaudio
